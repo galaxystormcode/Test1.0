@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet" >
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="../Контрольная работа 1/css/style.css">
+</head>
+<body>
+ 
+    <header>
+		<!-- Site Logo -->
+		<a href=""><div id="logo">Anime</div></a>
+
+		<!--  Navigation -->
+		<nav class="main-nav">
+			<ul>
+				<li><a href="home.html" class="active">Home</a></li>
+				<li><a href="anime.html">Anime</a></li>
+				<li><a href="games.html">Games</a></li>
+                <li> <a href="programming.html">Programming</a> </li>
+			</ul>
+		</nav>
+	</header>
+
+		<!--  full screen -->
+	<button class="full-screen" onclick="$(document).toggleFullScreen()"></button>
+		<!-- Content Page -->
+	<section class="content show" id="home">
+		<h1>Kimetsu no Yaiba</h1>
+		<h5>Demon Slayer</h5>
+		<p>The manga is set in the Japanese outback during the Taishō era. One day, the main character, a young charcoal merchant Tanjiro Kamado, was forced to stay due to bad weather in the city where he sold his goods. Returning to his native village, he discovers that his mother, younger sisters and brothers have died as a result of an attack by demons, in the existence of which Tanjiro refused to believe before. The only survivor after this incident is his sister Nezuko, who was infected with demonic blood and turned into a demon herself, but managed to retain part of her human consciousness. Not wanting to leave his sister in trouble, Tanjiro decides to become a demon slayer in order to find a means from these creatures to make Nezuko human again.</p>
+		<p><a href="https://ru.wikipedia.org/wiki/%D0%98%D1%81%D1%82%D1%80%D0%B5%D0%B1%D0%B8%D1%82%D0%B5%D0%BB%D1%8C_%D0%B4%D0%B5%D0%BC%D0%BE%D0%BD%D0%BE%D0%B2">More info &#187;</a></p>
+	</section>
+        		<!-- Social -->
+	<nav class="social-nav">
+		<ul>
+			<li><a href="#"><img src="../Контрольная работа 1/img/icon-facebook.png" /></a></li>
+			<li><a href="#"><img src="../Контрольная работа 1/img/icon-twitter.png" /></a></li>
+			<li><a href="#"><img src="../Контрольная работа 1/img/icon-google.png" /></a></li>
+			<li><a href="#"><img src="../Контрольная работа 1/img/icon-dribbble.png" /></a></li>
+			<li><a href="#"><img src="../Контрольная работа 1/img/icon-linkedin.png" /></a></li>
+			<li><a href="#"><img src="../Контрольная работа 1/img/icon-pinterest.png" /></a></li>
+		</ul>
+	</nav>
+		
+		<!-- Background Slides -->
+	<div id="maximage">
+		<div>
+			<img class="back" src="../Контрольная работа 1/img/7e9maFsRJanwrR7YFgn6rEmudiX.jpg" alt="" />
+			<img class="gradient" src="../Контрольная работа 1/img/gradient.png" alt="" />
+		</div>
+		<div>
+			<img class="back" src="../Контрольная работа 1/img/devyat-stolpov-ot-demon-slayer-oboi-1600x600_84.jpg" alt="" />
+			<img class="gradient" src="../Контрольная работа 1/img/gradient.png" alt="" />
+		</div>
+		<div>
+			<img class="back" src="../Контрольная работа 1/img/krd-art-23.jpg" alt="" />
+			<img class="gradient" src="../Контрольная работа 1/img/gradient.png" alt="" />
+		</div>
+        <div>
+			<img class="back" src="../Контрольная работа 1/img/maxresdefault.jpg" alt="" />
+			<img class="gradient" src="../Контрольная работа 1/img/gradient.png" alt="" />
+		</div>
+        <div>
+			<img class="back" src="../Контрольная работа 1/img/setan-slayer-anime-wallpaper-4000x1333_106.jpg" alt="" />
+			<img class="gradient" src="../Контрольная работа 1/img/gradient.png" alt="" />
+		</div>
+	</div>
+		
+	<!-- jQuery and javascript -->
+		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js'></script>
+		<script src="js/jquery.easing.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.cycle.all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.maximage.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.fullscreen.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.ba-hashchange.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+		
+		<!-- Background carusel -->
+		<script type="text/javascript" charset="utf-8">
+			$(function(){
+				$('#maximage').maximage({
+					cycleOptions: {
+						fx: 'fade',
+						speed: 1000, // Has to match the speed for CSS transitions in jQuery.maximage.css (lines 30 - 33)
+						timeout: 5000,
+						prev: '#arrow_left',
+						next: '#arrow_right',
+						pause: 0,
+						before: function(last,current){
+							if(!$.browser.msie){
+								// Start HTML5 video when you arrive
+								if($(current).find('video').length > 0) $(current).find('video')[0].play();
+							}
+						},
+						after: function(last,current){
+							if(!$.browser.msie){
+								// Pauses HTML5 video when you leave it
+								if($(last).find('video').length > 0) $(last).find('video')[0].pause();
+							}
+						}
+					},
+					onFirstImageLoaded: function(){
+						jQuery('#cycle-loader').hide();
+						jQuery('#maximage').fadeIn('fast');
+					}
+				});
+	
+				// Helper function to Fill and Center the HTML5 Video
+				jQuery('video,object').maximage('maxcover');
+	
+			});
+		</script>
+</body>
+</html>
